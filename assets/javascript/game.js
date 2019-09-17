@@ -1,34 +1,34 @@
-// //PRESS ANY KEY TO GET STARTED
-// var startGame = document.getElementById('startGame');
-
-// function pressed() {
-//     startGame.classList.add('hideMe');
-// }
-
-// function unload() {
-//     window.removeEventListener('keypress', pressed, false);
-//     window.removeEventListener('unload', unload, false);
-// }
-
-// window.addEventListener('keypress', pressed, false);
-// window.addEventListener('unload', unload, false);
-
+var winDisplayElement = document.getElementById("winDisplay");
+var currentWordElement = document.getElementById("currentWord");
+var remainingGuessesElement = document.getElementById("remainingGuesses");
+var remainingLettersElement = document.getElementById("remainingLetters");
 // //HANGMAN CHOICES
-// var Things = ["walkman", "merlin", "atari", "swatch"];
-// var Shows = ["MASH", "Cheers", "ALF", "Seinfeld",]; 
-// var Movies = ["Ghostbusters", "Goonies", "Gremlins", "Footloose"]; 
-// var Music = ["Foreigner", "Aerosmith", "Whitesnake", "Queen"];
+var wordOptions = ["walkman", "merlin", "atari", "swatch", "MASH", "Cheers", "ALF", "Seinfeld", "Ghostbusters", "Goonies", "Gremlins", "Footloose", "Foreigner", "Aerosmith", "Whitesnake", "Queen"];
 
-// var anyKey = document.querySelector('#startGame');
+var randomOption = wordOptions[Math.floor(Math.random()*wordOptions.length)].toLowerCase();
+var completeAlphabet = [];
+const numberGuesses = 10;
+var completeWord = false;
+var numberWins = 0;
 
-// anyKey.addEventListener("click", function(){
-//    releaseEvents(); 
-// });
+function randomWord() {
+    var html = "";
+    for(var i = 0; i < randomOptionlength; i++) {
+        if(completeAlphabet.indexOf(randomOption[i]) !== -1 || randomOption[i] === " ") {
+            html += randomOption;
+        } else {
+            html += "_";
+        }
+    }
+    currentWordElement.innerHTML = html;
+}
 
-var userText = document.getElementById("user-text");
-var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+function clearAll() {
+    remainingGuessesElement.innerHTML = numberGuesses;
+    completeAlphabet = [];
+    completeAlphabet.innerHTML = "";
+}
 
-document.onkeyup = function(event) {
-    userText.textContent = event.key;
-};
-
+randomOption();
+winDisplayElement.innerHTML = winDisplay;
+remainingGuessesElement.innerHTML = remainingGuesses;
