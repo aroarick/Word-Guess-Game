@@ -1,0 +1,22 @@
+body {
+    background-color: rgb(124, 127, 171);
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    color: black;
+}
+
+.container {
+    background-color: rgb(187, 188, 188);
+    padding: 20px;
+    width: 600px;
+    height: 600px;
+    margin: 20px auto;
+}
+
+#quote {
+    background-color: rgb(97, 151, 176);
+    font-family: 'Orbitron', sans-serif;
+}
