@@ -10,17 +10,26 @@
     <body>
         <h1>HANGMAN</h1>
 
+        
+
         <div class="container wrapper">
             <div id="quote">
-                <p>Press any key to get started</p>
+                <p class="blinking">Press any key to get started</p>
             </div>
             <div class="word">
-                <p>Wins</p>
+                <p>Wins: <span id="winDisplay">0</span>
+                </p>
+                <br>
+                <!-- PRESS ANY KEY TO GET STARTED -->
+                <div id="startGame">space</div>
                 <br>
                 <p>Current Word</p>
                 <br>
-                <p>Number of Guesses Remaining</p>
-                <p>Letters Already Guess</p>
+                <p>Number of Guesses Remaining: <span id="remaining-guesses">13</span></p>
+                <p>Letters Remaining: 
+                    <br>
+                   <p><span id="user-text">a b c d e f g h i j k l m n o p q r s t u v w x y z</span></p>
+                </p>
             </div>
         </div>
 

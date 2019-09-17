@@ -15,6 +15,16 @@ h1 {
         0 0 0.2em rgb(199, 36, 177);
 }
 
+p {
+    color: rgb(154, 219, 232);
+}
+
+/* PRESS ANY KEY TO GET STARTED */
+/* below hangman */
+.hideMe {
+    display:none;
+}
+
 .container {
     padding: 20px;
     width: 600px;
@@ -26,10 +36,6 @@ h1 {
 #quote, .word {
     color: rgb(154, 219, 232);
     text-align: center;
-}
-
-hr {
-    color: #000;
 }
 
 /* Start Page */
@@ -48,7 +54,7 @@ button {
 
 @keyframes blinkingText {
     0% {
-        color: #000;
+        color: rgb(97, 151, 176); 
     }
 
     50% {
@@ -57,7 +63,7 @@ button {
     }
 
     100% {
-        color: #000;
+        color: rgb(97, 151, 176);
     }
 }
 
