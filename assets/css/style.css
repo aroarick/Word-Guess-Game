@@ -1,22 +1,64 @@
+/* Colour Swatches 
+rgb(154, 219, 232) blue
+rgb(68, 0, 153) purple
+rgb(199, 36, 177) pink*/
+
 body {
-    background-color: rgb(124, 127, 171);
+    background-color: black;
+    font-family: 'Orbitron', sans-serif;
 }
 
 h1 {
-    font-family: 'Orbitron', sans-serif;
+    color: rgb(154, 219, 232);
     text-align: center;
-    color: black;
+    text-shadow: 0 0 0.5em rgb(154, 219, 232), 0 0 0.2em rgb(154, 219, 232),
+        0 0 0.2em rgb(199, 36, 177);
 }
 
 .container {
-    background-color: rgb(187, 188, 188);
     padding: 20px;
     width: 600px;
     height: 600px;
     margin: 20px auto;
+    border: rgb(199, 36, 177) 4px dotted;
 }
 
-#quote {
-    background-color: rgb(97, 151, 176);
-    font-family: 'Orbitron', sans-serif;
+#quote, .word {
+    color: rgb(154, 219, 232);
+    text-align: center;
+}
+
+hr {
+    color: #000;
+}
+
+/* Start Page */
+button {
+    
+}
+
+.startPage {
+    background: rgb(97, 151, 176);
+}
+
+/* Blinking */
+.blinking {
+    animation: blinkingText .9s infinite;
+}
+
+@keyframes blinkingText {
+    0% {
+        color: #000;
+    }
+
+    50% {
+        color:
+            transparent;
+    }
+
+    100% {
+        color: #000;
+    }
+}
+
 }
