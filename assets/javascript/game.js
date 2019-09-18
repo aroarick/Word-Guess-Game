@@ -4,7 +4,7 @@ var remainingGuessesElement = document.getElementById("remainingGuesses");
 var remainingLettersElement = document.getElementById("remainingLetters");
 
 // //HANGMAN CHOICES
-//var wordOptions = ["walkman"];
+// var wordOptions = ["walkman"];
 var wordOptions = ["walkman", "merlin", "atari", "swatch", "MASH", "Cheers", "ALF", "Seinfeld", "Ghostbusters", "Goonies", "Gremlins", "Footloose", "Foreigner", "Aerosmith", "Whitesnake", "Queen"];
 
 var randomOption = wordOptions[Math.floor(Math.random() * wordOptions.length)].toLowerCase();
@@ -16,6 +16,7 @@ var completeWord = false;
 var numberWins = 0;
 var previousWord = "";
 
+// BLANK SPACES FOR WORD
 function randomWord() {
     var html = "";
     for (var i = 0; i < randomOption.length; i++) {
@@ -28,6 +29,7 @@ function randomWord() {
     currentWordElement.innerHTML = html;
 }
 
+//CLEARING THE THING
 function clearAll() {
     remainingGuessesElement.innerHTML = numberGuesses;
     guessCount = 0;
@@ -45,10 +47,12 @@ function clearAll() {
     blinkingText.classList.remove("hide");
 }
 
+//GENERATE RANDOM WORD
 randomWord();
 winDisplayElement.innerHTML = numberWins;
 remainingGuessesElement.innerHTML = numberGuesses;
 
+//WHEN PLAYER PUSHES BUTTON, A LETTER APPEARS
 document.onkeydown = function (e) {
     var theKey = e.key;
     var theKeyCode = e.keyCode;
@@ -66,10 +70,12 @@ document.onkeydown = function (e) {
             }
         }
 
+        //WHEN PLAYER PUSHES BUTTON, NUMBER OF GUESSES LEFT GOES DOWN
         if (randomOption.indexOf(theKey) === -1) {
             guessCount++;
         }
 
+        //WHAT HAPPENS IF THE PLAYER GOES OVER MAX-GUESSES
         if (guessCount >= numberGuesses) {
             clearAll();
             randomOption = wordOptions[Math.floor(Math.random() * wordOptions.length)].toLowerCase();
@@ -86,8 +92,10 @@ document.onkeydown = function (e) {
 
         remainingLettersElement.innerHTML = html;
 
+        //GENERATE RANDOM WORD
         randomWord();
 
+        //ADD WINS, PUT PREVIOUS WORD, START A NEW GAME
         var randomWordActive = document.getElementById("currentWord").innerHTML;
         if (randomWordActive.indexOf("_") === -1) {
             completeWord = false;
