@@ -4,8 +4,8 @@ var remainingGuessesElement = document.getElementById("remainingGuesses");
 var remainingLettersElement = document.getElementById("remainingLetters");
 
 // //HANGMAN CHOICES
-// var wordOptions = ["walkman"];
-var wordOptions = ["walkman", "merlin", "atari", "swatch", "MASH", "Cheers", "ALF", "Seinfeld", "Ghostbusters", "Goonies", "Gremlins", "Footloose", "Foreigner", "Aerosmith", "Whitesnake", "Queen"];
+var wordOptions = ["walkman"];
+// var wordOptions = ["walkman", "merlin", "atari", "swatch", "MASH", "Cheers", "ALF", "Seinfeld", "Ghostbusters", "Goonies", "Gremlins", "Footloose", "Foreigner", "Aerosmith", "Whitesnake", "Queen"];
 
 var randomOption = wordOptions[Math.floor(Math.random() * wordOptions.length)].toLowerCase();
 var completeAlphabet = [];

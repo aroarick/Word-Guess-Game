@@ -11,14 +11,14 @@ body {
 
 h1 {
     font-size: 4em;
-    color: rgb(154, 219, 232);
+    color: rgb(255, 164, 0);
     text-align: center;
-    text-shadow: 0 0 0.5em rgb(154, 219, 232), 0 0 0.2em rgb(154, 219, 232),
-        0 0 0.2em rgb(199, 36, 177);
+    text-shadow: 0 0 0.5em rgb(59, 63, 182), 0 0 0.2em rgb(59, 63, 182),
+        0 0 0.2em rgb(59, 63, 182);
 }
 
 p {
-    color: rgb(154, 219, 232);
+    color: rgb(214, 37, 152);
 }
 
 /* Pink Dotted Border */
@@ -27,7 +27,7 @@ p {
     width: 600px;
     height: 300px;
     margin: 20px auto;
-    border: rgb(199, 36, 177) 4px dotted;
+    border: rgb(59, 63, 182) 4px dotted;
     animation: glowBackground 3s infinite;
 }
 
@@ -38,7 +38,7 @@ p {
 
 @keyframes blinkingText {
     0% {
-        color: rgb(97, 151, 176);
+        color: rgb(214, 37, 152);
     }
 
     50% {
@@ -47,7 +47,7 @@ p {
     }
 
     100% {
-        color: rgb(97, 151, 176);
+        color: rgb(214, 37, 152);
     }
 }
 
@@ -59,22 +59,22 @@ p {
 /* Colour of Font */
 #quote,
 .word {
-    color: rgb(154, 219, 232);
+    color: rgb(214, 37, 152);
     text-align: center;
 }
 
 /* Container Pulsing Glow */
 @keyframes glowBackground {
     0% {
-        box-shadow: 0px 0px 100px 0px rgba(199, 36, 177, .15);
+        box-shadow: 0px 0px 100px 0px rgba(59, 63, 182, .15);
     }
 
     65% {
-        box-shadow: 0px 0px 100px 35px rgba(199, 36, 177, .75);
+        box-shadow: 0px 0px 100px 35px rgba(59, 63, 182, .75);
     }
 
     100% {
-        box-shadow: 0px 0px 100px 0px rgba(199, 36, 177, .15);
+        box-shadow: 0px 0px 100px 0px rgba(59, 63, 182, .15);
     }
 }
 
@@ -89,15 +89,15 @@ p {
     margin: 0px;
     font-family: 'Mr Dafoe', cursive;
     font-size: 140px;
-    color: #F975F7;
+    color: rgb(214, 37, 152);
     transform: rotate(-15deg);
     -ms-transform: rotate(-15deg);
     /* IE 9 */
     -webkit-transform: rotate(-15deg);
     /* Safari and Chrome */
     margin-left: 170px;
-    margin-top: -440px;
-    -webkit-text-stroke: 1px #f008b7;
-    -webkit-filter: drop-shadow(2px 2px 20px #f008b7);
+    margin-top: -435px;
+    -webkit-text-stroke: 1px rgb(214, 37, 152);
+    -webkit-filter: drop-shadow(2px 2px 20px rgb(214, 37, 152));
     z-index: 20;
 }
