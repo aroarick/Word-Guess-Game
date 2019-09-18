@@ -2,20 +2,25 @@ var winDisplayElement = document.getElementById("winDisplay");
 var currentWordElement = document.getElementById("currentWord");
 var remainingGuessesElement = document.getElementById("remainingGuesses");
 var remainingLettersElement = document.getElementById("remainingLetters");
+
 // //HANGMAN CHOICES
+//var wordOptions = ["walkman"];
 var wordOptions = ["walkman", "merlin", "atari", "swatch", "MASH", "Cheers", "ALF", "Seinfeld", "Ghostbusters", "Goonies", "Gremlins", "Footloose", "Foreigner", "Aerosmith", "Whitesnake", "Queen"];
 
-var randomOption = wordOptions[Math.floor(Math.random()*wordOptions.length)].toLowerCase();
+var randomOption = wordOptions[Math.floor(Math.random() * wordOptions.length)].toLowerCase();
 var completeAlphabet = [];
-const numberGuesses = 10;
+var numberGuesses = 10;
+var guessCount = 0;
+var guessesLeft = numberGuesses;
 var completeWord = false;
 var numberWins = 0;
+var previousWord = "";
 
 function randomWord() {
     var html = "";
-    for(var i = 0; i < randomOptionlength; i++) {
-        if(completeAlphabet.indexOf(randomOption[i]) !== -1 || randomOption[i] === " ") {
-            html += randomOption;
+    for (var i = 0; i < randomOption.length; i++) {
+        if (completeAlphabet.indexOf(randomOption[i]) !== -1 || randomOption[i] === " ") {
+            html += randomOption[i].toUpperCase();
         } else {
             html += "_";
         }
@@ -25,10 +30,80 @@ function randomWord() {
 
 function clearAll() {
     remainingGuessesElement.innerHTML = numberGuesses;
+    guessCount = 0;
+    guessesLeft = numberGuesses;
     completeAlphabet = [];
     completeAlphabet.innerHTML = "";
+
+    var chosenLetters = document.getElementById("chosenLetters");
+    for (var i = 0; i < chosenLetters.children.length; i++) {
+        var currentLetter = chosenLetters.children[i];
+        currentLetter.classList.remove("guessed");
+    }
+
+    var blinkingText = document.getElementById("blinking")
+    blinkingText.classList.remove("hide");
 }
 
-randomOption();
-winDisplayElement.innerHTML = winDisplay;
-remainingGuessesElement.innerHTML = remainingGuesses;
+randomWord();
+winDisplayElement.innerHTML = numberWins;
+remainingGuessesElement.innerHTML = numberGuesses;
+
+document.onkeydown = function (e) {
+    var theKey = e.key;
+    var theKeyCode = e.keyCode;
+    var blinkingText = document.getElementById("blinking")
+    blinkingText.classList.add("hide");
+
+    if (theKeyCode >= 65 && theKeyCode <= 90 && completeAlphabet.indexOf(theKey) === -1) {
+        completeAlphabet.push(theKey);
+
+        var chosenLetters = document.getElementById("chosenLetters");
+        for (var i = 0; i < chosenLetters.children.length; i++) {
+            var currentLetter = chosenLetters.children[i];
+            if (theKey.toUpperCase() === currentLetter.innerHTML) {
+                currentLetter.classList.add("guessed");
+            }
+        }
+
+        if (randomOption.indexOf(theKey) === -1) {
+            guessCount++;
+        }
+
+        if (guessCount >= numberGuesses) {
+            clearAll();
+            randomOption = wordOptions[Math.floor(Math.random() * wordOptions.length)].toLowerCase();
+        } else {
+            remainingGuessesElement.innerHTML = numberGuesses - guessCount;
+        }
+
+        var html = "";
+        for (var i = 0; i < completeAlphabet.length; i++) {
+            if (randomOption.indexOf(completeAlphabet[i]) === -1) {
+                html += completeAlphabet[i].toUpperCase();
+            }
+        }
+
+        remainingLettersElement.innerHTML = html;
+
+        randomWord();
+
+        var randomWordActive = document.getElementById("currentWord").innerHTML;
+        if (randomWordActive.indexOf("_") === -1) {
+            completeWord = false;
+            numberWins++;
+            winDisplayElement.innerHTML = numberWins;
+            clearAll();
+            previousWord = randomOption;
+            randomOption = wordOptions[Math.floor(Math.random() * wordOptions.length)].toLowerCase();
+            randomWord();
+            setPreviousWords(previousWord);
+        }
+    }
+}
+
+function setPreviousWords(word) {
+    var previousWords = document.getElementById("previousWords");
+    console.log(word,previousWord);
+    previousWords.innerHTML = word;
+} 

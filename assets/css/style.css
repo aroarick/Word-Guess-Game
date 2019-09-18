@@ -2,6 +2,7 @@
 rgb(154, 219, 232) blue
 rgb(68, 0, 153) purple
 rgb(199, 36, 177) pink*/
+@import url(https://fonts.googleapis.com/css?family=Mr+Dafoe);
 
 body {
     background-color: black;
@@ -9,6 +10,7 @@ body {
 }
 
 h1 {
+    font-size: 4em;
     color: rgb(154, 219, 232);
     text-align: center;
     text-shadow: 0 0 0.5em rgb(154, 219, 232), 0 0 0.2em rgb(154, 219, 232),
@@ -21,40 +23,40 @@ p {
 
 /* PRESS ANY KEY TO GET STARTED */
 /* below hangman */
-.hideMe {
-    display:none;
+.hide {
+    display: none;
 }
 
 .container {
     padding: 20px;
     width: 600px;
-    height: 600px;
+    height: 300px;
     margin: 20px auto;
     border: rgb(199, 36, 177) 4px dotted;
+    animation: glowBackground 3s infinite;
 }
 
-#quote, .word {
+#quote,
+.word {
     color: rgb(154, 219, 232);
     text-align: center;
 }
 
 /* Start Page */
-button {
-    
-}
+button {}
 
 .startPage {
     background: rgb(97, 151, 176);
 }
 
 /* Blinking */
-.blinking {
+#blinking {
     animation: blinkingText .9s infinite;
 }
 
 @keyframes blinkingText {
     0% {
-        color: rgb(97, 151, 176); 
+        color: rgb(97, 151, 176);
     }
 
     50% {
@@ -67,4 +69,39 @@ button {
     }
 }
 
+@keyframes glowBackground {
+    0% {
+        box-shadow: 0px 0px 100px 0px rgba(199, 36, 177, .15);
+    }
+
+    65% {
+        box-shadow: 0px 0px 100px 35px rgba(199, 36, 177, .75);
+    }
+
+    100% {
+        box-shadow: 0px 0px 100px 0px rgba(199, 36, 177, .15);
+    }
+}
+
+
+.guessed {
+    color: red;
+}
+
+#previousWords {
+    position: absolute;
+    margin: 0px;
+    font-family: 'Mr Dafoe', cursive;
+    font-size: 140px;
+    color: #F975F7;
+    transform: rotate(-15deg);
+    -ms-transform: rotate(-15deg);
+    /* IE 9 */
+    -webkit-transform: rotate(-15deg);
+    /* Safari and Chrome */
+    margin-left: 270px;
+    margin-top: -50px;
+    -webkit-text-stroke: 1px #f008b7;
+    -webkit-filter: drop-shadow(2px 2px 20px #f008b7);
+    z-index: 20;
 }
