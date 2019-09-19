@@ -2,10 +2,12 @@ var winDisplayElement = document.getElementById("winDisplay");
 var currentWordElement = document.getElementById("currentWord");
 var remainingGuessesElement = document.getElementById("remainingGuesses");
 var remainingLettersElement = document.getElementById("remainingLetters");
+var goodLetterSound = document.getElementById("goodLetterSound");
+// .setAttribute("src", "assets/Noises/letter_beep.mp3");
 
 // //HANGMAN CHOICES
-var wordOptions = ["walkman"];
-// var wordOptions = ["walkman", "merlin", "atari", "swatch", "MASH", "Cheers", "ALF", "Seinfeld", "Ghostbusters", "Goonies", "Gremlins", "Footloose", "Foreigner", "Aerosmith", "Whitesnake", "Queen"];
+var wordOptions = ["walkman", "merlin", "atari", "swatch", "MASH", "Cheers", "ALF", "Seinfeld", "Ghostbusters", "Goonies", "Gremlins", "Footloose", "Foreigner", "Aerosmith", "Whitesnake", "Queen"];
+
 
 var randomOption = wordOptions[Math.floor(Math.random() * wordOptions.length)].toLowerCase();
 var completeAlphabet = [];
@@ -15,6 +17,7 @@ var guessesLeft = numberGuesses;
 var completeWord = false;
 var numberWins = 0;
 var previousWord = "";
+// var letterSound;
 
 // BLANK SPACES FOR WORD
 function randomWord() {
@@ -59,9 +62,11 @@ document.onkeydown = function (e) {
     var blinkingText = document.getElementById("blinking")
     blinkingText.classList.add("hide");
 
+    //LETTER IS A-Z AND HASN'T BEEN PRESSED BEFORE
     if (theKeyCode >= 65 && theKeyCode <= 90 && completeAlphabet.indexOf(theKey) === -1) {
         completeAlphabet.push(theKey);
-
+        
+        //HIGHLIGHTS LETTERS THAT HAVE BEEN CLICKED
         var chosenLetters = document.getElementById("chosenLetters");
         for (var i = 0; i < chosenLetters.children.length; i++) {
             var currentLetter = chosenLetters.children[i];
@@ -70,9 +75,11 @@ document.onkeydown = function (e) {
             }
         }
 
-        //WHEN PLAYER PUSHES BUTTON, NUMBER OF GUESSES LEFT GOES DOWN
+        //WHEN PLAYER SELECTS WRONG LETTER
         if (randomOption.indexOf(theKey) === -1) {
             guessCount++;
+        } else {
+            goodLetterSound.play();
         }
 
         //WHAT HAPPENS IF THE PLAYER GOES OVER MAX-GUESSES
@@ -87,7 +94,7 @@ document.onkeydown = function (e) {
         for (var i = 0; i < completeAlphabet.length; i++) {
             if (randomOption.indexOf(completeAlphabet[i]) === -1) {
                 html += completeAlphabet[i].toUpperCase();
-            }
+            } 
         }
 
         remainingLettersElement.innerHTML = html;
@@ -112,6 +119,6 @@ document.onkeydown = function (e) {
 
 function setPreviousWords(word) {
     var previousWords = document.getElementById("previousWords");
-    console.log(word,previousWord);
+    console.log(word, previousWord);
     previousWords.innerHTML = word;
-} 
+}
