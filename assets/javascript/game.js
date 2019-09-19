@@ -3,7 +3,8 @@ var currentWordElement = document.getElementById("currentWord");
 var remainingGuessesElement = document.getElementById("remainingGuesses");
 var remainingLettersElement = document.getElementById("remainingLetters");
 var goodLetterSound = document.getElementById("goodLetterSound");
-// .setAttribute("src", "assets/Noises/letter_beep.mp3");
+var youWinSound = document.getElementById("youWinSound");
+var youLoseSound = document.getElementById("youLoseSound");
 
 // //HANGMAN CHOICES
 var wordOptions = ["walkman", "merlin", "atari", "swatch", "MASH", "Cheers", "ALF", "Seinfeld", "Ghostbusters", "Goonies", "Gremlins", "Footloose", "Foreigner", "Aerosmith", "Whitesnake", "Queen"];
@@ -17,7 +18,6 @@ var guessesLeft = numberGuesses;
 var completeWord = false;
 var numberWins = 0;
 var previousWord = "";
-// var letterSound;
 
 // BLANK SPACES FOR WORD
 function randomWord() {
@@ -86,6 +86,7 @@ document.onkeydown = function (e) {
         if (guessCount >= numberGuesses) {
             clearAll();
             randomOption = wordOptions[Math.floor(Math.random() * wordOptions.length)].toLowerCase();
+            youLoseSound.play();
         } else {
             remainingGuessesElement.innerHTML = numberGuesses - guessCount;
         }
@@ -105,6 +106,7 @@ document.onkeydown = function (e) {
         //ADD WINS, PUT PREVIOUS WORD, START A NEW GAME
         var randomWordActive = document.getElementById("currentWord").innerHTML;
         if (randomWordActive.indexOf("_") === -1) {
+            youWinSound.play();
             completeWord = false;
             numberWins++;
             winDisplayElement.innerHTML = numberWins;
